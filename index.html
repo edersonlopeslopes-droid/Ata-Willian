@@ -346,6 +346,46 @@
       .page { box-shadow: none; }
       .print-btn { display: none; }
     }
+
+    /* ── ASSINATURA ── */
+    .sign-section {
+      padding: 1.8rem 3.2rem 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .sign-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 1.4rem;
+    }
+
+    .sign-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1.4fr;
+      gap: 1.4rem 2rem;
+    }
+
+    .sign-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .sign-field--wide { grid-column: span 1; }
+
+    .sign-line {
+      border-bottom: 1.5px solid var(--ink);
+      height: 28px;
+    }
+
+    .sign-field-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 560px) {
+      .sign-grid { grid-template-columns: 1fr 1fr; }
+      .sign-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -362,14 +402,14 @@
       </div>
       <div class="meta-item">
         <label>Assunto</label>
-        <span>Emerson &amp; Michael</span>
+        <span>Emerson, Michael &amp; Léia</span>
       </div>
     </div>
   </div>
 
   <!-- OBJETIVO -->
   <div class="objetivo">
-    <strong>Objetivo:</strong> Alinhamento de feedbacks e plano de desenvolvimento para Emerson e Michael.
+    <strong>Objetivo:</strong> Alinhamento de feedbacks e plano de desenvolvimento para Emerson, Michael e Léia.
   </div>
 
   <!-- BODY -->
@@ -414,10 +454,33 @@
 
     <hr class="divider"/>
 
-    <!-- 3. Responsabilidades -->
+    <!-- 3. Feedback Léia -->
     <div class="section">
       <div class="section-header">
         <div class="section-number">3</div>
+        <div class="section-title">Feedback – Léia</div>
+      </div>
+      <div class="section-body">
+        <div class="pessoa">Colaboradora: Léia</div>
+        <p style="margin-bottom:0.6rem;">Foi alinhado para Léia um <strong>período estruturado de desenvolvimento</strong>, com exposição a diversos cenários e situações de gestão, visando prepará-la progressivamente para assumir maior responsabilidade.</p>
+        <p style="margin-bottom:0.6rem;">O plano de desenvolvimento prevê as seguintes etapas:</p>
+        <ul class="dev-list">
+          <li>Atuação em substituição durante períodos de férias de gestores, como forma de vivenciar a rotina gerencial na prática</li>
+          <li>Exposição a diferentes cenários e unidades para ampliar repertório de liderança</li>
+          <li>Desenvolvimento contínuo até que esteja preparada para assumir a gestão de uma filial de forma independente</li>
+        </ul>
+        <div class="note">
+          O período de desenvolvimento será acompanhado de perto pela liderança, garantindo suporte e avaliação contínua da evolução de Léia.
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- 4. Responsabilidades -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">4</div>
         <div class="section-title">Responsabilidades Definidas</div>
       </div>
       <div class="section-body">
@@ -431,11 +494,11 @@
           <tbody>
             <tr>
               <td class="resp-name">Willian</td>
-              <td>Conduzir os feedbacks diretamente com Emerson e Michael</td>
+              <td>Conduzir os feedbacks diretamente com Emerson, Michael e Léia</td>
             </tr>
             <tr>
               <td class="resp-name">Suzana &amp; Ederson</td>
-              <td>Estruturar os principais pontos a serem abordados no feedback</td>
+              <td>Estruturar os principais pontos a serem abordados no feedback e acompanhar o plano de desenvolvimento de Léia</td>
             </tr>
           </tbody>
         </table>
@@ -444,17 +507,18 @@
 
     <hr class="divider"/>
 
-    <!-- 4. Pontos-chave -->
+    <!-- 5. Pontos-chave -->
     <div class="section">
       <div class="section-header">
-        <div class="section-number">4</div>
+        <div class="section-number">5</div>
         <div class="section-title">Pontos-chave para Abordagem no Feedback</div>
       </div>
       <div class="section-body">
         <ul class="focus-list">
-          <li><strong>Postura</strong> – virada de chave de vendedor para gerente</li>
-          <li><strong>Consciência do novo papel</strong>: entender que serão cobrados e remunerados como gerentes</li>
-          <li><strong>Postura profissional</strong> adequada à função</li>
+          <li><strong>Liderança</strong> – virada de chave de vendedor para gerente</li>
+          <li><strong>Consciência do novo papel e responsabilidade sobre a unidade de negócio</strong>: entender que serão cobrados e remunerados como gerentes, incluindo a compreensão sobre o modelo de comissionamento</li>
+          <li><strong>Postura profissional</strong> adequada à função e alinhada às expectativas da empresa</li>
+          <li><strong>Competências gerenciais</strong> – desenvolvimento das habilidades essenciais para a gestão de equipes e resultados</li>
           <li><strong>Capacidade de dar feedback</strong> à equipe e assumir responsabilidade pela loja</li>
           <li><strong>Desenvolvimento contínuo</strong>, tanto profissional quanto pessoal</li>
         </ul>
@@ -467,6 +531,29 @@
   <div class="final-note">
     <div class="label">Considerações Finais</div>
     <p>A reunião reforçou o compromisso da liderança com o desenvolvimento dos colaboradores, destacando a importância da evolução comportamental e da adaptação ao novo nível de responsabilidade.</p>
+  </div>
+
+  <!-- CAMPOS DE ASSINATURA -->
+  <div class="sign-section">
+    <div class="sign-label">Ciência do Colaborador</div>
+    <div class="sign-grid">
+      <div class="sign-field">
+        <div class="sign-line"></div>
+        <div class="sign-field-label">Colaborador</div>
+      </div>
+      <div class="sign-field">
+        <div class="sign-line"></div>
+        <div class="sign-field-label">Matrícula</div>
+      </div>
+      <div class="sign-field">
+        <div class="sign-line"></div>
+        <div class="sign-field-label">Filial / Regional</div>
+      </div>
+      <div class="sign-field sign-field--wide">
+        <div class="sign-line"></div>
+        <div class="sign-field-label">Assinatura</div>
+      </div>
+    </div>
   </div>
 
   <!-- FOOTER -->
