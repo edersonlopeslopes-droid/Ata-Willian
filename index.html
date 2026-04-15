@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ata de Reunião – Desenvolvimento de Lideranças</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --ink-light: #3d3d5c;
+      --cream: #faf8f3;
+      --accent: #c8a96e;
+      --accent-light: #e8d9b8;
+      --rule: #d4c9a8;
+      --muted: #8a8070;
+      --highlight: #f0ebe0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3rem 1.5rem;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 780px;
+      background: #fff;
+      box-shadow: 0 4px 40px rgba(26,26,46,0.10), 0 1px 4px rgba(26,26,46,0.07);
+      border-top: 5px solid var(--accent);
+      padding: 0;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HEADER ── */
+    .header {
+      padding: 2.8rem 3.2rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .doc-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem 2rem;
+    }
+
+    .meta-item label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .meta-item span {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      font-weight: 400;
+    }
+
+    /* ── OBJETIVO BANNER ── */
+    .objetivo {
+      background: var(--highlight);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 3.2rem;
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+    }
+
+    .objetivo strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── BODY ── */
+    .body {
+      padding: 2.4rem 3.2rem;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 2.4rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.1s; }
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.3s; }
+    .section:nth-child(4) { animation-delay: 0.4s; }
+    .section:nth-child(5) { animation-delay: 0.5s; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-number {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .section-body {
+      padding-left: 3rem;
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+    }
+
+    /* pessoa badge */
+    .pessoa {
+      display: inline-block;
+      background: var(--highlight);
+      border: 1px solid var(--accent-light);
+      border-radius: 3px;
+      padding: 0.05rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* bullet list */
+    .dev-list {
+      list-style: none;
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    .dev-list li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.88rem;
+      color: var(--ink-light);
+    }
+
+    .dev-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.6em;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* note box */
+    .note {
+      background: var(--highlight);
+      border-left: 2px solid var(--accent);
+      padding: 0.6rem 0.9rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.83rem;
+      color: var(--ink-light);
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+
+    /* responsibility table */
+    .resp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+    }
+
+    .resp-table th {
+      text-align: left;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.4rem 0.8rem 0.4rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 500;
+    }
+
+    .resp-table td {
+      padding: 0.55rem 0.8rem 0.55rem 0;
+      color: var(--ink-light);
+      border-bottom: 1px solid var(--highlight);
+      vertical-align: top;
+    }
+
+    .resp-table tr:last-child td { border-bottom: none; }
+
+    .resp-name {
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    /* numbered focus list */
+    .focus-list {
+      list-style: none;
+      counter-reset: focus;
+      margin-top: 0.5rem;
+    }
+
+    .focus-list li {
+      counter-increment: focus;
+      position: relative;
+      padding: 0.5rem 0 0.5rem 2.4rem;
+      border-bottom: 1px solid var(--highlight);
+      font-size: 0.88rem;
+      color: var(--ink-light);
+    }
+
+    .focus-list li:last-child { border-bottom: none; }
+
+    .focus-list li::before {
+      content: counter(focus, decimal-leading-zero);
+      position: absolute;
+      left: 0; top: 0.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── CONSIDERAÇÕES FINAIS ── */
+    .final-note {
+      background: var(--ink);
+      color: rgba(255,255,255,0.85);
+      padding: 1.4rem 3.2rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      border-top: 1px solid var(--rule);
+    }
+
+    .final-note .label {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 1.2rem 3.2rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .print-btn {
+      background: none;
+      border: 1px solid var(--rule);
+      padding: 0.35rem 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      color: var(--muted);
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.2s;
+      letter-spacing: 0.06em;
+    }
+
+    .print-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 1.6rem 0;
+    }
+
+    @media (max-width: 560px) {
+      .header, .body, .objetivo, .final-note, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-body { padding-left: 0; }
+      .header h1 { font-size: 1.4rem; }
+    }
+
+    @media print {
+      body { padding: 0; background: #fff; }
+      .page { box-shadow: none; }
+      .print-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="doc-label">Documento Interno · Confidencial</div>
+    <h1>Ata de Reunião<br>Desenvolvimento de Lideranças</h1>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <label>Participantes</label>
+        <span>Willian, Ederson, Suzana</span>
+      </div>
+      <div class="meta-item">
+        <label>Assunto</label>
+        <span>Emerson &amp; Michael</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo">
+    <strong>Objetivo:</strong> Alinhamento de feedbacks e plano de desenvolvimento para Emerson e Michael.
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- 1. Feedback Emerson -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-title">Feedback do Willian – Emerson</div>
+      </div>
+      <div class="section-body">
+        <div class="pessoa">Colaborador: Emerson</div>
+        <p style="margin-bottom:0.6rem;">Foram identificados os seguintes pontos de desenvolvimento:</p>
+        <ul class="dev-list">
+          <li>Postura profissional</li>
+          <li>Maior segurança na tomada de decisão</li>
+          <li>Mudança de mentalidade: deixar de focar nos problemas e passar a buscar soluções</li>
+        </ul>
+        <div class="note">
+          Willian reforçou que acredita no potencial do Emerson, demonstrando interesse em sua permanência e evolução dentro da equipe.
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- 2. Feedback Michael -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-title">Feedback – Michael</div>
+      </div>
+      <div class="section-body">
+        <div class="pessoa">Colaborador: Michael</div>
+        <p style="margin-bottom:0.6rem;">Michael apresenta pontos de desenvolvimento semelhantes aos de Emerson, mas tem <strong>boa desenvoltura na solução de problemas</strong>.</p>
+        <div class="note">
+          Willian também destacou que confia no potencial do colaborador, reafirmando o interesse em sua continuidade e crescimento na equipe.
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- 3. Responsabilidades -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <div class="section-title">Responsabilidades Definidas</div>
+      </div>
+      <div class="section-body">
+        <table class="resp-table">
+          <thead>
+            <tr>
+              <th>Responsável</th>
+              <th>Atribuição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="resp-name">Willian</td>
+              <td>Conduzir os feedbacks diretamente com Emerson e Michael</td>
+            </tr>
+            <tr>
+              <td class="resp-name">Suzana &amp; Ederson</td>
+              <td>Estruturar os principais pontos a serem abordados no feedback</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- 4. Pontos-chave -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <div class="section-title">Pontos-chave para Abordagem no Feedback</div>
+      </div>
+      <div class="section-body">
+        <ul class="focus-list">
+          <li><strong>Postura</strong> – virada de chave de vendedor para gerente</li>
+          <li><strong>Consciência do novo papel</strong>: entender que serão cobrados e remunerados como gerentes</li>
+          <li><strong>Postura profissional</strong> adequada à função</li>
+          <li><strong>Capacidade de dar feedback</strong> à equipe e assumir responsabilidade pela loja</li>
+          <li><strong>Desenvolvimento contínuo</strong>, tanto profissional quanto pessoal</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- CONSIDERAÇÕES FINAIS -->
+  <div class="final-note">
+    <div class="label">Considerações Finais</div>
+    <p>A reunião reforçou o compromisso da liderança com o desenvolvimento dos colaboradores, destacando a importância da evolução comportamental e da adaptação ao novo nível de responsabilidade.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Ata de Reunião · Desenvolvimento de Lideranças</span>
+    <button class="print-btn" onclick="window.print()">Imprimir / Salvar PDF</button>
+  </div>
+
+</div>
+</body>
+</html>
